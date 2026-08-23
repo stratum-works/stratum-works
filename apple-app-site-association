@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["885845M2A4.com.stratumworks.outspell"],
+        "components": [
+          {
+            "/": "/outspell/join",
+            "?": { "c": "?*" },
+            "comment": "Match invite. The code travels as ?c= so the page is a real file on static hosting."
+          },
+          {
+            "/": "/outspell/join/",
+            "?": { "c": "?*" },
+            "comment": "Same link with the trailing slash iOS may normalise to."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Match — Outspell</title>
+    <meta name="description" content="Somebody opened an Outspell table and invited you to it.">
+    <!-- Nothing here is worth a search result; the link is meant for one person. -->
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="../../index.html" class="logo">Stratum Works</a>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="../../products.html">Products</a>
+            <a href="../../about.html">About</a>
+            <a href="../../contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <span class="hero-badge">Match Invite</span>
+        <h1>You've been invited to a match.</h1>
+        <p id="lede">If Outspell is installed, this link opens straight into the table. If you're reading this page, it isn't — yet.</p>
+    </section>
+
+    <div class="container container-narrow">
+        <div class="cta-box">
+            <h2>Join code</h2>
+            <p id="code" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 2.75rem; font-weight: 800; letter-spacing: 0.35em; margin: 0.5rem 0 0.25rem;">——————</p>
+            <p id="hint">Open Outspell, choose <strong>Play Online</strong>, and enter this code.</p>
+            <div class="cta-links">
+                <a href="../index.html" class="btn btn-primary">What is Outspell?</a>
+                <a href="../../contact.html" class="btn btn-secondary">Ask for a TestFlight invite</a>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>The table waits for you.</strong> Nothing starts — no clock, no first letter — until every seat is taken. There's no rush, but there is somebody sitting there.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p><span class="brand">Stratum Works</span> — Intelligent Systems for Everyday Life</p>
+        <p>&copy; 2026 Stratum Works. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Codes are six characters, upper case, letters and digits. Anything
+        // else is somebody editing the URL by hand, and gets the generic page
+        // rather than their text rendered back at them.
+        const raw = new URLSearchParams(location.search).get('c') || '';
+        const code = raw.trim().toUpperCase();
+        if (/^[A-Z0-9]{6}$/.test(code)) {
+            document.getElementById('code').textContent = code;
+        } else {
+            document.getElementById('code').style.display = 'none';
+            document.getElementById('hint').textContent =
+                'This invite link is missing its code. Ask whoever sent it to share the table again.';
+        }
+    </script>
+</body>
+</html>

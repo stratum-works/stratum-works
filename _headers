@@ -1,0 +1,15 @@
+# Apple fetches the association file and refuses to parse it unless the
+# response says application/json. It will not follow a redirect to get it
+# either, so this is the only place the content type can be fixed — and it
+# fails *silently*: the link simply opens Safari forever.
+#
+# Both paths are served: iOS asks for /.well-known/... first and falls back
+# to the root copy.
+
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+
+/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
