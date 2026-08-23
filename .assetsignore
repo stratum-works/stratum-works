@@ -1,0 +1,12 @@
+# Every file under the assets directory is uploaded and publicly served, and
+# the assets directory here is the repository root. Without this list that
+# includes .git — the whole history, downloadable by anyone who guesses the
+# path — and .wrangler, which caches the Cloudflare account id.
+#
+# Do not add .well-known to this file. iOS reads the app association from it.
+.git
+.gitignore
+.wrangler
+.assetsignore
+node_modules
+README.md
