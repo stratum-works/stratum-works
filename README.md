@@ -9,6 +9,11 @@ npx wrangler deploy
 ```
 
 There is no CI, so nothing reaches the domain until somebody runs that.
+Merging to `main` does not deploy the site.
+
+## HTTPS
+
+`_redirects` cannot send `http://` to `https://`. It matches paths, not schemes, and a Worker script would not see the request: plain `http://stratum-works.com` returns 500 at the edge. Turn on **Always Use HTTPS** for the zone (Cloudflare dashboard → SSL/TLS → Edge Certificates). Do not add an origin redirect for the same job. Cloudflare warns that an origin HTTPS redirect can loop once Always Use HTTPS is on.
 
 ## Files that are load-bearing
 

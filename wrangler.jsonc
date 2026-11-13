@@ -1,6 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "stratum-works",
+  // Plain http:// cannot be redirected from this repo. `_redirects` matches
+  // paths, not schemes, and a Worker does not see the request when the edge
+  // rejects HTTP with a 500. Enable "Always Use HTTPS" on the zone:
+  // SSL/TLS → Edge Certificates. Do not add an origin redirect; Cloudflare
+  // warns that one can loop with Always Use HTTPS.
   "compatibility_date": "2026-06-13",
   "observability": {
     "enabled": true

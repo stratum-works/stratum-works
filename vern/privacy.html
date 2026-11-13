@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — Vern | Stratum Works</title>
-    <meta name="description" content="Privacy Policy for Vern Smart Family Assistant by Stratum Works.">
+    <meta name="description" content="Privacy Policy for Vern, the Wood family's private butler. How Google, Microsoft, Yahoo, and iCloud data is accessed, used, stored, and deleted.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -26,72 +26,130 @@
 
     <div class="container-narrow legal">
         <h1>Privacy Policy</h1>
-        <p class="effective-date">Effective Date: March 18, 2026 &nbsp;|&nbsp; Last Updated: June 13, 2026</p>
+        <p class="effective-date">Effective Date: March 18, 2026 &nbsp;|&nbsp; Last Updated: November 13, 2026</p>
 
-        <p>This Privacy Policy describes how Vern, a product of Stratum Works ("we," "us," or "our"), collects, uses, and protects information when you interact with our family assistant service through the Vern Companion iOS app, SMS, or other supported channels.</p>
+        <p>Vern is a private family butler for Aaron Wood's own family. It is not a public product. It is self-hosted on the family's own Mac mini home server and is used through the Vern Companion iOS app and SMS. This Privacy Policy describes how Vern, a product of Stratum Works ("we," "us," or "our"), handles information when the family uses those channels.</p>
 
         <h2>1. Information We Collect</h2>
-        <p>When you interact with Vern, we may collect:</p>
+        <p>When you interact with Vern, the service may handle:</p>
         <ul>
             <li><strong>Account Information:</strong> Your name, email address, phone number, and family role as provided by you or an authorized family administrator during setup.</li>
             <li><strong>Conversation Content:</strong> Messages you send to and receive from Vern through the app or SMS, used solely to provide the requested services (scheduling, reminders, family coordination).</li>
-            <li><strong>Calendar &amp; Email Data:</strong> When you connect your Google or Apple account, Vern reads your calendar events and email to coordinate schedules and surface important information for your family.</li>
+            <li><strong>Connected Account Data:</strong> If you connect a Google, Microsoft, Yahoo, or Apple/iCloud account, Vern accesses mail and calendar data from that provider as described in <a href="#connected-accounts">Connected Accounts</a>.</li>
             <li><strong>Health &amp; Fitness Data:</strong> If you grant access, Vern reads Apple HealthKit data (steps, workouts, activity) to provide personalized fitness insights. Health data is processed on-device and on your home server only.</li>
             <li><strong>Usage Data:</strong> Timestamps, interaction patterns, and feature usage to maintain service quality.</li>
         </ul>
 
         <h2>2. How We Use Your Information</h2>
-        <p>We use collected information exclusively to:</p>
+        <p>Vern uses collected information to:</p>
         <ul>
-            <li>Provide family coordination and scheduling services</li>
+            <li>Provide family coordination, the household calendar, deconflicting, and reminders</li>
+            <li>Triage email by labeling and archiving messages. Email triage never deletes mail.</li>
             <li>Deliver requested information (weather, calendar, reminders)</li>
             <li>Authenticate authorized users</li>
-            <li>Improve service reliability and response quality</li>
+            <li>Maintain service reliability</li>
         </ul>
 
         <div class="highlight-box">
-            <strong>We do not:</strong> sell, rent, or share your personal information with third parties for marketing purposes. Your data is never used for advertising.
+            <strong>We do not</strong> sell personal information or use it for advertising. Connected-account data is not used to develop, improve, or train generalized/non-personalized AI or ML models.
         </div>
 
-        <h2>3. Data Storage &amp; Security</h2>
-        <p>Vern is a local-first system. All data is stored and processed on your privately-owned home server — not in the cloud. We employ encryption at rest (AES-256) and in transit, role-based access controls, and regular security reviews. Sensitive credentials such as API keys are stored in an encrypted vault on your server.</p>
+        <h2 id="connected-accounts">3. Connected Accounts</h2>
+        <p>Connecting an account is optional. A family member connects Google, Microsoft, or Yahoo from the Vern Companion app on their phone, using that provider's OAuth flow. Apple/iCloud may instead use an app-specific password, or calendar access on the phone through EventKit. Vern requests only the mail and calendar access described below.</p>
+        <p>Across every provider, email triage only labels and archives messages. It never deletes them. OAuth tokens and other credentials are stored encrypted in a vault on the home server. Mail and calendar data Vern syncs is stored on that same home server. Optional remote access uses a Cloudflare Tunnel at <a href="https://vern.stratum-works.com">vern.stratum-works.com</a>. The tunnel is a path to the home server. It does not keep a separate copy of the data.</p>
+        <p>Microsoft, Yahoo, and iCloud connections are governed by those providers' own policies as well as this one. Google connections are governed by this policy and by Google's policies, including the Limited Use requirements stated in the Google section.</p>
 
-        <h2>4. Data Retention</h2>
+        <h3>Family calendar privacy</h3>
+        <p>The family calendar merges everyone's calendars and deconflicts them. These rules apply to events from every connected provider:</p>
+        <ul>
+            <li>Private events are not shared in full.</li>
+            <li>A spouse sees only a summary of the other parent's private events.</li>
+            <li>Parents see young kids' private events in full and teens' private events as a summary.</li>
+            <li>A person's own calendars show everything unless an event is marked private.</li>
+        </ul>
+
+        <h3>Optional cloud AI</h3>
+        <p>Cloud AI is off by default. The family administrator can turn it on and supply their own API keys. The providers are Anthropic, OpenAI, Google Gemini, and xAI Grok. Before anything is sent, Vern filters the request and redacts key-like and sensitive data. If cloud AI stays off, Vern uses a local model and does not send mailbox or calendar content to those providers.</p>
+        <p>When the administrator enables a cloud AI feature such as email triage, mail and calendar content from a connected account may be sent to the chosen provider for that feature only. Humans at Stratum Works do not read that content except with consent, for security, or to comply with the law. It is not used for advertising, sold, or used to develop, improve, or train generalized/non-personalized AI or ML models.</p>
+
+        <h3 id="google">Google</h3>
+        <p><strong>Access.</strong> Vern requests Gmail access to the full mailbox, which is a restricted Google scope (<code>https://mail.google.com/</code>), and Google Calendar scopes for the calendars on the connected account. Gmail data includes messages, threads, labels, and related mailbox metadata. Calendar data includes calendars and events (titles, times, locations, descriptions, and attendees). The connection is made with Google OAuth in the Vern Companion app.</p>
+        <p><strong>Use.</strong> Vern uses Gmail and Google Calendar data for the household calendar, deconflicting, reminders, and email triage. Email triage only labels and archives Gmail messages. It never deletes them. Vern does not use Gmail or Google Calendar data for any other purpose.</p>
+        <p><strong>What is written.</strong> The only changes Vern makes in Gmail are labels and archive actions. Vern does not delete Gmail messages.</p>
+        <p><strong>Storage.</strong> Google OAuth tokens are stored encrypted in a vault on the home server. Gmail and Calendar data Vern syncs is stored on that home server. Optional remote access uses the Cloudflare Tunnel at vern.stratum-works.com. The tunnel reaches the home server and does not move Google user data into a separate cloud store.</p>
+        <p><strong>Sharing.</strong> The family calendar privacy rules above apply to Google Calendar events. Google user data is not used for advertising, sold, or used to develop, improve, or train generalized/non-personalized AI or ML models. Humans do not read Google user data except with consent, for security, or to comply with the law. Gmail and Google Calendar content may be sent to the chosen cloud AI provider (Anthropic, OpenAI, Google Gemini, or xAI Grok) only when the administrator enables cloud AI features such as email triage, and only after pre-send filtering that redacts key-like and sensitive data. If cloud AI is left off, that content is not sent to a cloud AI provider. Google's own policy also applies: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+        <p><strong>Retention and deletion.</strong> Disconnecting the Google account in the Vern Companion app deletes the stored Google tokens from the vault. You can also revoke Vern at your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a> page. For help deleting synced data, email <a href="mailto:support@stratum-works.com">support@stratum-works.com</a>.</p>
+        <div class="highlight-box">
+            <p>Vern's use of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements.</p>
+            <p style="margin-bottom: 0;"><a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a></p>
+        </div>
+
+        <h3 id="microsoft">Microsoft</h3>
+        <p><strong>Access.</strong> Vern can connect Outlook.com and Microsoft 365 mail and calendar through the Microsoft identity platform (OAuth) and Microsoft Graph. Mail data includes messages and mailbox metadata needed to read mail and to label or archive it. Calendar data includes calendars and events (titles, times, locations, descriptions, and attendees). The connection is made from the Vern Companion app.</p>
+        <p><strong>Use.</strong> Vern uses this data for the household calendar, deconflicting, reminders, and email triage. Email triage only labels and archives messages. It never deletes them.</p>
+        <p><strong>What is written.</strong> The only mailbox changes Vern makes are labels (including equivalent categories) and archive actions. Vern does not delete Microsoft mail.</p>
+        <p><strong>Storage.</strong> Microsoft OAuth tokens are stored encrypted in a vault on the home server. Mail and calendar data Vern syncs is stored on that home server. The optional Cloudflare Tunnel at vern.stratum-works.com reaches that server and does not keep a separate copy.</p>
+        <p><strong>Sharing.</strong> The family calendar privacy rules above apply to Microsoft calendar events. Microsoft user data is not used for advertising, sold, or used to develop, improve, or train generalized/non-personalized AI or ML models. Humans do not read it except with consent, for security, or to comply with the law. Outlook and Microsoft Calendar content may be sent to the chosen cloud AI provider (Anthropic, OpenAI, Google Gemini, or xAI Grok) only when the administrator enables cloud AI features such as email triage, and only after pre-send filtering that redacts key-like and sensitive data. If cloud AI is left off, that content is not sent. Microsoft's own policy also applies: <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+        <p><strong>Retention and deletion.</strong> Disconnecting the Microsoft account in the Vern Companion app deletes the stored tokens from the vault. You can also revoke Vern on your Microsoft account permissions page at <a href="https://account.microsoft.com/privacy/app-access" target="_blank" rel="noopener">account.microsoft.com/privacy/app-access</a>. For help deleting synced data, email <a href="mailto:support@stratum-works.com">support@stratum-works.com</a>.</p>
+
+        <h3 id="yahoo">Yahoo</h3>
+        <p><strong>Access.</strong> Vern can connect Yahoo Mail and Yahoo calendar through Yahoo OAuth from the Vern Companion app. Mail data includes messages and mailbox metadata needed to read mail and to label or archive it. Calendar data includes calendars and events (titles, times, locations, descriptions, and attendees).</p>
+        <p><strong>Use.</strong> Vern uses this data for the household calendar, deconflicting, reminders, and email triage. Email triage only labels and archives messages. It never deletes them.</p>
+        <p><strong>What is written.</strong> The only mailbox changes Vern makes are labels and archive actions. Vern does not delete Yahoo Mail.</p>
+        <p><strong>Storage.</strong> Yahoo OAuth tokens are stored encrypted in a vault on the home server. Mail and calendar data Vern syncs is stored on that home server. The optional Cloudflare Tunnel at vern.stratum-works.com reaches that server and does not keep a separate copy.</p>
+        <p><strong>Sharing.</strong> The family calendar privacy rules above apply to Yahoo calendar events. Yahoo user data is not used for advertising, sold, or used to develop, improve, or train generalized/non-personalized AI or ML models. Humans do not read it except with consent, for security, or to comply with the law. Yahoo Mail and calendar content may be sent to the chosen cloud AI provider (Anthropic, OpenAI, Google Gemini, or xAI Grok) only when the administrator enables cloud AI features such as email triage, and only after pre-send filtering that redacts key-like and sensitive data. If cloud AI is left off, that content is not sent. Yahoo's own policy also applies: <a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html" target="_blank" rel="noopener">Yahoo Privacy Policy</a>.</p>
+        <p><strong>Retention and deletion.</strong> Disconnecting the Yahoo account in the Vern Companion app deletes the stored tokens from the vault. You can also revoke Vern in Yahoo Account Security, under recent activity and app access: <a href="https://login.yahoo.com/myaccount/security" target="_blank" rel="noopener">login.yahoo.com/myaccount/security</a>. For help deleting synced data, email <a href="mailto:support@stratum-works.com">support@stratum-works.com</a>.</p>
+
+        <h3 id="apple">Apple and iCloud</h3>
+        <p><strong>Access.</strong> Vern can connect iCloud Mail and iCloud Calendar. iCloud may use an app-specific password, or the phone may grant Apple calendar access through EventKit. Mail data includes messages and mailbox metadata needed to read mail and to label or archive it. Calendar data includes calendars and events (titles, times, locations, descriptions, and attendees), whether they come from iCloud or from EventKit on the phone.</p>
+        <p><strong>Use.</strong> Vern uses this data for the household calendar, deconflicting, reminders, and email triage. Email triage only labels and archives messages. It never deletes them.</p>
+        <p><strong>What is written.</strong> The only mailbox changes Vern makes are labels and archive actions. Vern does not delete iCloud Mail.</p>
+        <p><strong>Storage.</strong> App-specific passwords and any other iCloud credentials are stored encrypted in a vault on the home server. Mail and calendar data Vern syncs, including events read through EventKit, is stored on that home server. The optional Cloudflare Tunnel at vern.stratum-works.com reaches that server and does not keep a separate copy.</p>
+        <p><strong>Sharing.</strong> The family calendar privacy rules above apply to Apple and iCloud calendar events. This data is not used for advertising, sold, or used to develop, improve, or train generalized/non-personalized AI or ML models. Humans do not read it except with consent, for security, or to comply with the law. iCloud Mail and calendar content may be sent to the chosen cloud AI provider (Anthropic, OpenAI, Google Gemini, or xAI Grok) only when the administrator enables cloud AI features such as email triage, and only after pre-send filtering that redacts key-like and sensitive data. If cloud AI is left off, that content is not sent. Apple's own policy also applies: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a>.</p>
+        <p><strong>Retention and deletion.</strong> Disconnecting iCloud in the Vern Companion app deletes stored credentials from the vault. Revoke an app-specific password in Apple ID settings under Sign-In and Security, App-Specific Passwords (<a href="https://account.apple.com/account/manage" target="_blank" rel="noopener">account.apple.com</a>). Revoke EventKit calendar access in iOS Settings under Privacy &amp; Security, Calendars. For help deleting synced data, email <a href="mailto:support@stratum-works.com">support@stratum-works.com</a>.</p>
+
+        <h2>4. Data Storage &amp; Security</h2>
+        <p>Vern is local-first. Household data is stored on the family's privately owned home server, a Mac mini, rather than in a Stratum Works cloud account. Cloud AI is optional and opt-in, and off unless the administrator enables it. We employ encryption at rest (AES-256) and in transit, role-based access controls, and regular security reviews. Sensitive credentials such as OAuth tokens, app-specific passwords, and API keys are stored in an encrypted vault on that server.</p>
+        <p>Optional remote access uses a Cloudflare Tunnel at vern.stratum-works.com. The tunnel forwards to the home server. Data stays stored there.</p>
+
+        <h2>5. Data Retention</h2>
         <p>Conversation content is retained for up to 90 days to provide context and service continuity. You may request deletion of your data at any time by contacting the family administrator or through the Vern Companion app settings.</p>
+        <p>Disconnecting a Google, Microsoft, Yahoo, or iCloud account in the app deletes that account's tokens or credentials from the vault. You can also revoke access at the provider, as described in each Connected Accounts section. To ask for deletion of synced mail or calendar data, email <a href="mailto:support@stratum-works.com">support@stratum-works.com</a>.</p>
 
-        <h2>5. Third-Party Services</h2>
+        <h2>6. Third-Party Services</h2>
         <p>Vern may interact with the following third-party services to fulfill requests:</p>
         <ul>
-            <li><strong>Google OAuth:</strong> Account sign-in for calendar and email access (subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>)</li>
+            <li><strong>Google, Microsoft, Yahoo, and Apple/iCloud:</strong> Optional mail and calendar connections, described in <a href="#connected-accounts">Connected Accounts</a>. Each provider's privacy policy applies to that connection.</li>
             <li><strong>Apple HealthKit:</strong> On-device fitness and health data (never sent to external servers)</li>
             <li><strong>Apple WeatherKit:</strong> Weather forecasts and conditions (no personal data shared)</li>
-            <li><strong>Cloud AI Providers (optional):</strong> If enabled by the family administrator, Vern may send conversation context to AI providers (Anthropic, Google Gemini, or OpenAI) to enhance responses. This is opt-in and disabled by default.</li>
-            <li><strong>Twilio:</strong> SMS/MMS message delivery for text-based interactions (subject to <a href="https://www.twilio.com/legal/privacy" target="_blank">Twilio's Privacy Policy</a>)</li>
+            <li><strong>Cloud AI Providers (optional):</strong> If enabled by the family administrator, Vern may send filtered content to Anthropic, OpenAI, Google Gemini, or xAI Grok. This is opt-in and disabled by default. See <a href="#connected-accounts">Connected Accounts</a>.</li>
+            <li><strong>Twilio:</strong> SMS/MMS message delivery for text-based interactions (subject to <a href="https://www.twilio.com/legal/privacy" target="_blank" rel="noopener">Twilio's Privacy Policy</a>)</li>
         </ul>
 
-        <h2>6. Your Rights</h2>
+        <h2>7. Your Rights</h2>
         <p>You have the right to:</p>
         <ul>
-            <li><strong>Access</strong> the personal information we hold about you</li>
+            <li><strong>Access</strong> the personal information Vern holds about you</li>
             <li><strong>Correct</strong> inaccurate information</li>
-            <li><strong>Delete</strong> your information by contacting the family administrator</li>
+            <li><strong>Delete</strong> your information by contacting the family administrator, disconnecting an account in the app, or emailing <a href="mailto:support@stratum-works.com">support@stratum-works.com</a></li>
             <li><strong>Opt out</strong> of SMS messaging at any time by texting STOP</li>
+            <li><strong>Revoke</strong> a connected account at Google, Microsoft, Yahoo, or Apple, as described above</li>
         </ul>
 
-        <h2>7. Consent &amp; Communications</h2>
+        <h2>8. Consent &amp; Communications</h2>
         <p>By creating an account in the Vern Companion app or being added by an authorized family administrator, you consent to receive communications from Vern related to scheduling, reminders, and family coordination. These communications may be delivered through the Vern app, push notifications, or SMS. Message and data rates may apply for SMS. Message frequency varies based on your interactions.</p>
 
         <div class="highlight-box">
             <strong>To opt out of SMS:</strong> Text <strong>STOP</strong> at any time to stop receiving text messages. Text <strong>HELP</strong> for assistance. Push notifications can be managed in the app or your device settings.
         </div>
 
-        <h2>8. Children's Privacy</h2>
+        <h2>9. Children's Privacy</h2>
         <p>Vern is a family service that may be used by minors under parental supervision. We do not knowingly collect information from children under 13 without verifiable parental consent. All minor accounts are created and managed by parent or guardian administrators.</p>
 
-        <h2>9. Changes to This Policy</h2>
+        <h2>10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date. Continued use of the service after changes constitutes acceptance of the revised policy.</p>
 
-        <h2>10. Contact Us</h2>
+        <h2>11. Contact Us</h2>
         <p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact:</p>
         <p>
             <strong>Stratum Works</strong><br>
@@ -101,6 +159,7 @@
 
     <footer class="site-footer">
         <p><span class="brand">Stratum Works</span> — Intelligent Systems for Everyday Life</p>
+        <p class="footer-links"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
         <p>&copy; 2026 Stratum Works. All rights reserved.</p>
     </footer>
 </body>

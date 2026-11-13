@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vern — Smart Family Assistant | Stratum Works</title>
-    <meta name="description" content="Vern is a private, AI-powered family assistant that runs on your own hardware. Scheduling, meal planning, finances, and more — all through natural conversation.">
+    <title>Vern — Private Family Butler | Stratum Works</title>
+    <meta name="description" content="Vern is a private family butler for Aaron Wood's family, self-hosted on their Mac mini. Optional Google, Microsoft, Yahoo, and iCloud connections. Not a public product.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -27,9 +27,9 @@
     </nav>
 
     <section class="hero">
-        <span class="hero-badge">Private &amp; Family-First</span>
+        <span class="hero-badge">Private Family Project</span>
         <h1>Meet Vern.</h1>
-        <p>A private, AI-powered family assistant that eliminates the mundane so you can focus on the meaningful. Scheduling, meal planning, household coordination, and more — running entirely on your own hardware.</p>
+        <p>Vern is a private family butler for Aaron Wood's family. It handles scheduling, meals, and household coordination from the family's own Mac mini home server, through the Vern Companion iOS app and SMS. Data is stored on that hardware. Cloud AI is optional and opt-in. Vern is not a public product.</p>
     </section>
 
     <div class="container">
@@ -67,28 +67,57 @@
             </div>
         </div>
 
+        <h2 class="section-title">Connected Accounts</h2>
+        <p class="section-lead">Vern can optionally connect Google, Microsoft, Yahoo, and Apple or iCloud accounts from the Vern Companion app. It uses them for the household calendar, deconflicting, reminders, and email triage. Triage only labels and archives mail, and never deletes it. The <a href="privacy.html">privacy policy</a> covers each provider.</p>
+        <div class="card-grid compact pairs">
+            <div class="card">
+                <div class="icon">📬</div>
+                <h3>Google</h3>
+                <p>OAuth on the phone requests Gmail (full mailbox, a restricted scope) and Google Calendar. Vern reads messages and events to merge the household calendar, deconflict schedules, send reminders, and triage email. Triage adds labels and archives. It never deletes. Tokens are stored encrypted in a vault on the home server. <a href="privacy.html#google">Google details</a>.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📧</div>
+                <h3>Microsoft</h3>
+                <p>Outlook.com and Microsoft 365 mail and calendar, through the Microsoft identity platform (OAuth) and Microsoft Graph. Same calendar, reminder, and triage uses: labels and archive only, never delete. Tokens are stored encrypted in the home server vault. <a href="privacy.html#microsoft">Microsoft details</a>.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📮</div>
+                <h3>Yahoo</h3>
+                <p>Yahoo Mail and calendar via Yahoo OAuth. Same household calendar, reminder, and triage uses, with the same label-and-archive rule that never deletes mail. Tokens are stored encrypted in the home server vault. <a href="privacy.html#yahoo">Yahoo details</a>.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🍎</div>
+                <h3>Apple and iCloud</h3>
+                <p>iCloud Mail and Calendar. iCloud may use an app-specific password, or the phone may read calendars through EventKit. Credentials are stored encrypted in the home server vault. Email triage follows the same label-and-archive, never-delete rule. <a href="privacy.html#apple">Apple details</a>.</p>
+            </div>
+        </div>
+        <div class="highlight-box">
+            <p>Synced mail and calendar data stays stored on the family's Mac mini. Optional remote access is a Cloudflare Tunnel at vern.stratum-works.com. The tunnel reaches that server and does not move the store into the cloud. Cloud AI is off by default. If an admin turns it on and supplies their own API key, Anthropic, OpenAI, Google Gemini, or xAI Grok may receive mailbox or calendar content for a feature such as email triage, after filtering that redacts key-like and sensitive data. Otherwise Vern uses a local model.</p>
+            <p style="margin-bottom: 0;"><a href="privacy.html">Read the privacy policy</a></p>
+        </div>
+
         <h2 class="section-title">Built on Three Principles</h2>
         <div class="principles">
             <div class="principle">
                 <div class="icon">🔒</div>
                 <h3>Privacy-First</h3>
-                <p>All data stays on your hardware. Nothing is sent to the cloud. You own everything.</p>
+                <p>Household data is stored on the family's own hardware. Cloud AI is optional and opt-in. Nothing is sold or harvested.</p>
             </div>
             <div class="principle">
                 <div class="icon">👨‍👩‍👧‍👦</div>
                 <h3>Family-Centered</h3>
-                <p>Built for real families. Age-appropriate content, parental controls, and shared coordination.</p>
+                <p>Built for this family. Age-appropriate content, parental controls, and shared coordination.</p>
             </div>
             <div class="principle">
                 <div class="icon">🧠</div>
                 <h3>Locally Intelligent</h3>
-                <p>Runs AI on your home server. No subscriptions, no external dependencies, no data harvesting.</p>
+                <p>The assistant runs on the home server. No subscription and no data harvesting. Cloud AI stays off unless an admin opts in.</p>
             </div>
         </div>
 
         <div class="cta-box">
-            <h2>Interested in Vern for Your Family?</h2>
-            <p>We're exploring making Vern available for any family to adopt. If you're interested in bringing Vern into your home, we'd love to hear from you.</p>
+            <h2>Vern is not a public product</h2>
+            <p>Vern is a private family project and is not currently available to the public. Questions can go to support.</p>
             <div class="cta-links">
                 <a href="mailto:support@stratum-works.com" class="btn btn-primary">Get in Touch</a>
                 <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
@@ -98,6 +127,7 @@
 
     <footer class="site-footer">
         <p><span class="brand">Stratum Works</span> — Intelligent Systems for Everyday Life</p>
+        <p class="footer-links"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
         <p>&copy; 2026 Stratum Works. All rights reserved.</p>
     </footer>
 </body>
